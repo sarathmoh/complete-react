@@ -1,6 +1,5 @@
 import { CDN_URL } from "../utils/constants";
 const RestoCard = ({ restoDetails }) => {
-  console.log(restoDetails);
   const { name, cuisines, avgRating, cloudinaryImageId } = restoDetails;
   const { deliveryTime } = restoDetails?.sla;
   return (
