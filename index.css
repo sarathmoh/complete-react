@@ -60,3 +60,13 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.btn{
+  padding: 5px 40px;
+}
+
+.btn{
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}

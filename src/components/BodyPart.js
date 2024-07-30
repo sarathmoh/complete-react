@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 
 const BodyPart = () => {
   const [list, setList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filterPurpose, setFilterPurpose] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -21,27 +23,50 @@ const BodyPart = () => {
     setList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilterPurpose(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return list.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-contatiner">
-      {/* <div className="search">search</div> */}
       <div className="btn">
         <button
           onClick={() => {
-            const filteredList = restaurantList.filter((restaurant) => {
-              return restaurant?.avgRating >= 4;
+            const filteredList = list.filter((restaurant) => {
+              return restaurant?.info?.avgRating > 4.6;
             });
             setList(filteredList);
           }}
         >
-          Click Me
+          Top Rated restaurant
         </button>
+        <div>
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              const filteredSearch = list.filter((resto) =>
+                resto.info.name.toLowerCase().includes(searchTerm.toLowerCase())
+              );
+              setFilterPurpose(filteredSearch);
+              setSearchTerm("")
+            }}
+          >
+            Search
+          </button>
+        </div>
       </div>
       <div className="card-display">
-        {list.map((restaurant) => (
+        {filterPurpose.map((restaurant) => (
           <RestoCard restoDetails={restaurant.info} key={restaurant.info.id} />
         ))}
       </div>
