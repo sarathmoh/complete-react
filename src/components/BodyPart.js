@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
 const BodyPart = () => {
+  console.log("REndering");
   const [list, setList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterPurpose, setFilterPurpose] = useState([]);
@@ -35,10 +36,10 @@ const BodyPart = () => {
       <div className="btn">
         <button
           onClick={() => {
-            const filteredList = list.filter((restaurant) => {
+            const filteredList = filterPurpose.filter((restaurant) => {
               return restaurant?.info?.avgRating > 4.6;
             });
-            setList(filteredList);
+            setFilterPurpose(filteredList);
           }}
         >
           Top Rated restaurant
@@ -58,7 +59,7 @@ const BodyPart = () => {
                 resto.info.name.toLowerCase().includes(searchTerm.toLowerCase())
               );
               setFilterPurpose(filteredSearch);
-              setSearchTerm("")
+              setSearchTerm("");
             }}
           >
             Search
