@@ -4,12 +4,13 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { HOME_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
 const BodyPart = () => {
   console.log("REndering");
   const [list, setList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterPurpose, setFilterPurpose] = useState([]);
-
+  const status = useOnlineStatus();
   useEffect(() => {
     fetchData();
   }, []);
@@ -27,6 +28,8 @@ const BodyPart = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+  if (status == false) return <h1>Sorry no internet connection</h1>;
+  
 
   return list.length === 0 ? (
     <Shimmer />
