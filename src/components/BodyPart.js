@@ -29,14 +29,14 @@ const BodyPart = () => {
     );
   };
   if (status == false) return <h1>Sorry no internet connection</h1>;
-  
 
   return list.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-contatiner">
-      <div className="btn">
+      <div className="flex p-4 mx-2">
         <button
+          className="  bg-gray-100 p-4 rounded-lg"
           onClick={() => {
             const filteredList = filterPurpose.filter((restaurant) => {
               return restaurant?.info?.avgRating > 4.6;
@@ -48,6 +48,7 @@ const BodyPart = () => {
         </button>
         <div>
           <input
+            className="p-3 border stroke-lime-400 ml-20 rounded-lg"
             type="text"
             placeholder="Search"
             value={searchTerm}
@@ -56,6 +57,7 @@ const BodyPart = () => {
             }}
           />
           <button
+            className="ml-4 bg-green-100 p-3 rounded-lg"
             onClick={() => {
               const filteredSearch = list.filter((resto) =>
                 resto.info.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -68,7 +70,7 @@ const BodyPart = () => {
           </button>
         </div>
       </div>
-      <div className="card-display">
+      <div className="flex flex-wrap">
         {filterPurpose.map((restaurant) => (
           <Link
             to={"restaurant/" + restaurant.info.id}

@@ -1,4 +1,9 @@
-.logo {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* .logo {
   margin-top: 5px;
   margin-left: 5px;
   width: 80px;
@@ -82,4 +87,4 @@
 .offline-pic{
   height: 30px;
   width: 30px;
-}
+} */

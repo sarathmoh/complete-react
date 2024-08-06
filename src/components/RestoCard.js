@@ -3,16 +3,16 @@ const RestoCard = ({ restoDetails }) => {
   const { name, cuisines, avgRating, cloudinaryImageId } = restoDetails;
   const { deliveryTime } = restoDetails?.sla;
   return (
-    <div className="resto-card">
-      <div className="food-image-parent">
-        <img className="food-image" src={CDN_URL + cloudinaryImageId} />
+    <div className="p-4 m-4 w-[270px] h-[500px] bg-gray-100 hover:bg-gray-200 rounded-2xl shadow-lg">
+      <div className="food-image-parent  ">
+        <img className="rounded-2xl w-30 h-70 " src={CDN_URL + cloudinaryImageId} />
       </div>
 
-      <div className="card-details">
-        <h3>{name}</h3>
-        <h4>{...cuisines.join("-")}</h4>
-        <h4>{avgRating}</h4>
-        <h4>deliveryTime:{deliveryTime}mins </h4>
+      <div>
+        <h3 className="font-bold pt-2 text-xl text-center">{name}</h3>
+        <h4 className="text-center">{...cuisines.join("-")}</h4>
+        <h4 className="text-center">{avgRating}</h4>
+        <h4 className="text-center">deliveryTime:{deliveryTime}mins </h4>
       </div>
     </div>
   );
