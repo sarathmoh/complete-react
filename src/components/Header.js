@@ -2,9 +2,11 @@ import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import online from "../utils/assets//icons8-connection-status-on-96.png";
+import offline from "../utils/assets/icons8-offline-96.png";
 const Header = () => {
   const [buttonState, setButtonState] = useState("Login");
-  const status=useOnlineStatus()
+  const status = useOnlineStatus();
   return (
     <div className="head-container">
       <div>
@@ -12,10 +14,21 @@ const Header = () => {
       </div>
       <div className="nav-links">
         <ul>
-          <li>{status? "online":"offline"}</li>
-          
-            <li><Link to="/">Home</Link></li>
-         
+          <li>
+            {status ? (
+              <img src={online} className="online-pic" />
+            ) : (
+              <img src={offline} className="offline-pic" />
+            )}
+          </li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
+
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
           <li>
             <Link to="/about">About Us</Link>
           </li>

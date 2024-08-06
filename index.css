@@ -74,3 +74,12 @@
  display: flex;
  flex-wrap: wrap;
 }
+
+.online-pic{
+  height: 30px;
+  width: 30px;
+}
+.offline-pic{
+  height: 30px;
+  width: 30px;
+}
