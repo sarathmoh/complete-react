@@ -1,16 +1,18 @@
-import RestoCard from "./RestoCard";
+import RestoCard, { withUpdatedOffer } from "./RestoCard";
 // import restaurantList from "../utils/mockData.js";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { HOME_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+
 const BodyPart = () => {
   console.log("REndering");
   const [list, setList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterPurpose, setFilterPurpose] = useState([]);
   const status = useOnlineStatus();
+  const GetOffer = withUpdatedOffer(RestoCard);
   useEffect(() => {
     fetchData();
   }, []);
@@ -74,9 +76,14 @@ const BodyPart = () => {
         {filterPurpose.map((restaurant) => (
           <Link
             to={"restaurant/" + restaurant.info.id}
-            key={restaurant.info.id}
-          >
-            <RestoCard restoDetails={restaurant.info} />
+            key={restaurant.info.id}>
+
+            {restaurant.info.aggregatedDiscountInfoV3 &&
+            Object.keys(restaurant.info.aggregatedDiscountInfoV3).length > 0 ? (
+              <GetOffer restoDetails={restaurant.info} />
+            ) : (
+              <RestoCard restoDetails={restaurant.info} />
+            )}
           </Link>
         ))}
       </div>

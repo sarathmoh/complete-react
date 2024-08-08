@@ -5,7 +5,10 @@ const RestoCard = ({ restoDetails }) => {
   return (
     <div className="p-4 m-4 w-[270px] h-[500px] bg-gray-100 hover:bg-gray-200 rounded-2xl shadow-lg">
       <div className="food-image-parent  ">
-        <img className="rounded-2xl w-30 h-70 " src={CDN_URL + cloudinaryImageId} />
+        <img
+          className="rounded-2xl w-30 h-70 "
+          src={CDN_URL + cloudinaryImageId}
+        />
       </div>
 
       <div>
@@ -16,6 +19,28 @@ const RestoCard = ({ restoDetails }) => {
       </div>
     </div>
   );
+};
+
+export const withUpdatedOffer = (RestoCard) => {
+  return (props) => {
+    console.log("props from higher", props);
+
+    const result = (
+      <div className="border stroke-lime-400 p-3 rounded-lg bg-pink-100 absolute">
+        {props.restoDetails.aggregatedDiscountInfoV3.header}
+        <span className="ml-2">
+          {props.restoDetails.aggregatedDiscountInfoV3.subHeader}
+        </span>
+      </div>
+    );
+
+    return (
+      <div>
+        {result}
+        <RestoCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestoCard;
