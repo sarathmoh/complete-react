@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { SPECIFIC_RESTO_MENU_ITEM_LIST } from "../utils/constants";
 const useRestroMenu = (id) => {
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState(null);
   useEffect(() => {
     fetchRestroDetails();
   }, []);
