@@ -11,7 +11,7 @@ const RestoDetails = () => {
   const details = useRestroMenu(id);
   if (!details) return <Shimmer />;
   const { name, cuisines, costForTwo } = details?.cards[2]?.card?.card?.info;
-  const data = details.cards[4].groupedCard.cardGroupMap.REGULAR.cards;
+  // const data = details.cards[4].groupedCard.cardGroupMap.REGULAR.cards;
   const categories =
     details.cards[4].groupedCard.cardGroupMap.REGULAR.cards.filter(
       (c) =>

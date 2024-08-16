@@ -1,10 +1,11 @@
 import RestoCard, { withUpdatedOffer } from "./RestoCard";
 // import restaurantList from "../utils/mockData.js";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { HOME_URL } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/context/UserContext";
 
 const BodyPart = () => {
   console.log("REndering");
@@ -13,6 +14,7 @@ const BodyPart = () => {
   const [filterPurpose, setFilterPurpose] = useState([]);
   const status = useOnlineStatus();
   const GetOffer = withUpdatedOffer(RestoCard);
+  const {loggedInUser,setUser}=useContext(UserContext)
   useEffect(() => {
     fetchData();
   }, []);
@@ -48,6 +50,16 @@ const BodyPart = () => {
         >
           Top Rated restaurant
         </button>
+
+        <div>
+          <input
+            className="p-3 border stroke-lime-400 ml-20 rounded-lg"
+            type="text"
+            value={loggedInUser}
+            onChange={(e)=>setUser(e.target.value)}
+          />
+        </div>
+
         <div>
           <input
             className="p-3 border stroke-lime-400 ml-20 rounded-lg"
@@ -76,8 +88,8 @@ const BodyPart = () => {
         {filterPurpose.map((restaurant) => (
           <Link
             to={"restaurant/" + restaurant.info.id}
-            key={restaurant.info.id}>
-
+            key={restaurant.info.id}
+          >
             {restaurant.info.aggregatedDiscountInfoV3 &&
             Object.keys(restaurant.info.aggregatedDiscountInfoV3).length > 0 ? (
               <GetOffer restoDetails={restaurant.info} />

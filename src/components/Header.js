@@ -1,17 +1,21 @@
 // import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import online from "../utils/assets//icons8-connection-status-on-96.png";
 import offline from "../utils/assets/icons8-offline-96.png";
-import icon from "../utils/assets/hamburger.png"
+import icon from "../utils/assets/hamburger.png";
+import UserContext from "../utils/context/UserContext";
 const Header = () => {
   const [buttonState, setButtonState] = useState("Login");
   const status = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
+ 
+
   return (
     <div className="flex justify-between bg-pink-200 shadow-lg">
       <div>
-        <img className="w-24 p-4" src={icon}  />
+        <img className="w-24 p-4" src={icon} />
       </div>
       <div className=" flex items-center">
         <ul className="flex">
@@ -38,6 +42,7 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="mx-4">Cart</li>
+          <li className="mx-4">{loggedInUser}</li>
           <li className="mx-4">
             <button
               className="btn"
