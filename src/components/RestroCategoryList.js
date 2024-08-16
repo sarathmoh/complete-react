@@ -1,5 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 const RestroCategoryList = ({ data }) => {
+  console.log("list");
+  
   return (
     <div>
       {data?.itemCards.map((item) => (

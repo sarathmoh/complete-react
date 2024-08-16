@@ -1,23 +1,27 @@
 import RestroCategoryList from "./RestroCategoryList";
 import { useState } from "react";
-const RestroCategory = ({ list }) => {
-  const [isLoading, setIsLoading] = useState(false);
+const RestroCategory = ({ list, isActive, onShow, index, data }) => {
+  // const [isLoading, setIsLoading] = useState(false);
   const eventHandler = () => {
-    setIsLoading(!isLoading);
+    // setIsLoading(!isLoading);
+    onShow(index);
   };
+  console.log("category");
+  console.log(index, "THis is my index");
+
   return (
     <div>
-      <div className="w-6/12 mx-auto  my-2 bg-gray-50 shadow-lg p-4 flex justify-between ">
-        <span
-          onClick={eventHandler}
-          className="text-xm font-bold text-xm cursor-pointer"
-        >
+      <div
+        className="w-6/12 mx-auto  my-2 bg-gray-50 shadow-lg p-4 flex justify-between cursor-pointer"
+        onClick={eventHandler}
+      >
+        <span className="text-xm font-bold text-xm">
           {list.title}({list.itemCards.length})
         </span>
         <span>+</span>
       </div>
       <div className="w-6/12 mx-auto  my-2 bg-gray-50 shadow-lg flex">
-        {isLoading && <RestroCategoryList data={list} />}
+        {isActive && <RestroCategoryList data={list} />}
       </div>
     </div>
   );
