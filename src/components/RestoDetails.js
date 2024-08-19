@@ -18,7 +18,6 @@ const RestoDetails = () => {
         c.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
-  console.log("details");
   const toggleHandler = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
   };

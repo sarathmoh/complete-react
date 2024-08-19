@@ -8,7 +8,6 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/context/UserContext";
 
 const BodyPart = () => {
-  console.log("REndering");
   const [list, setList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterPurpose, setFilterPurpose] = useState([]);
@@ -22,9 +21,6 @@ const BodyPart = () => {
   const fetchData = async () => {
     const result = await fetch(HOME_URL);
     const json = await result.json();
-    console.log(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
     setList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );

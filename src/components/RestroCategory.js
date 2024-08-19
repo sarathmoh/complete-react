@@ -6,8 +6,6 @@ const RestroCategory = ({ list, isActive, onShow, index, data }) => {
     // setIsLoading(!isLoading);
     onShow(index);
   };
-  console.log("category");
-  console.log(index, "THis is my index");
 
   return (
     <div>
@@ -21,7 +19,7 @@ const RestroCategory = ({ list, isActive, onShow, index, data }) => {
         <span>+</span>
       </div>
       <div className="w-6/12 mx-auto  my-2 bg-gray-50 shadow-lg flex">
-        {isActive && <RestroCategoryList data={list} />}
+        {isActive && <RestroCategoryList data={list.itemCards} />}
       </div>
     </div>
   );

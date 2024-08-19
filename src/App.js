@@ -6,9 +6,12 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestoDetails from "./components/RestoDetails";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 const Grocery = lazy(() => import("./components/Grocery"));
 import UserContext from "./utils/context/UserContext";
+import appStore from "./utils/store";
+import Cart from "./components/Cart";
 const AppLayout = () => {
   const [user, setUser] = useState();
   useEffect(() => {
@@ -19,12 +22,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedInUser: user ,setUser}}>
-      <div>
-        <Header />
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: user, setUser }}>
+        <div>
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 // const heading = React.createElement("h1", {id:"heading"}, "welcome to react");
@@ -41,6 +46,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/contact",

@@ -23,7 +23,7 @@ const RestoCard = ({ restoDetails }) => {
 
 export const withUpdatedOffer = (RestoCard) => {
   return (props) => {
-    console.log("props from higher", props);
+    // console.log("props from higher", props);
 
     const result = (
       <div className="border stroke-lime-400 p-3 rounded-lg bg-pink-100 absolute">
