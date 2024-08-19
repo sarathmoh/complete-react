@@ -6,11 +6,12 @@ import online from "../utils/assets//icons8-connection-status-on-96.png";
 import offline from "../utils/assets/icons8-offline-96.png";
 import icon from "../utils/assets/hamburger.png";
 import UserContext from "../utils/context/UserContext";
+import { useSelector } from "react-redux";
 const Header = () => {
   const [buttonState, setButtonState] = useState("Login");
   const status = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
- 
+  const cart = useSelector((store) => store.cartInfo.items);
 
   return (
     <div className="flex justify-between bg-pink-200 shadow-lg">
@@ -41,7 +42,9 @@ const Header = () => {
           <li className="mx-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li className="mx-4">Cart</li>
+          <li className="mx-4 font-bold text-xl">
+            <Link to="/cart">Cart({cart.length})</Link>
+          </li>
           <li className="mx-4">{loggedInUser}</li>
           <li className="mx-4">
             <button

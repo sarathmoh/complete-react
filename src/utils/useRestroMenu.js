@@ -8,7 +8,6 @@ const useRestroMenu = (id) => {
   const fetchRestroDetails = async () => {
     const result = await fetch(SPECIFIC_RESTO_MENU_ITEM_LIST + id);
     const jsonData = await result.json();
-    console.log(jsonData?.data, "json");
     setDetails(jsonData?.data);
   };
 
