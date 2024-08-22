@@ -1,5 +1,4 @@
 import RestoCard, { withUpdatedOffer } from "./RestoCard";
-// import restaurantList from "../utils/mockData.js";
 import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -13,7 +12,7 @@ const BodyPart = () => {
   const [filterPurpose, setFilterPurpose] = useState([]);
   const status = useOnlineStatus();
   const GetOffer = withUpdatedOffer(RestoCard);
-  const {loggedInUser,setUser}=useContext(UserContext)
+  const { loggedInUser, setUser } = useContext(UserContext);
   useEffect(() => {
     fetchData();
   }, []);
@@ -21,6 +20,7 @@ const BodyPart = () => {
   const fetchData = async () => {
     const result = await fetch(HOME_URL);
     const json = await result.json();
+
     setList(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -52,7 +52,7 @@ const BodyPart = () => {
             className="p-3 border stroke-lime-400 ml-20 rounded-lg"
             type="text"
             value={loggedInUser}
-            onChange={(e)=>setUser(e.target.value)}
+            onChange={(e) => setUser(e.target.value)}
           />
         </div>
 

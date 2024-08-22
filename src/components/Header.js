@@ -2,7 +2,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import online from "../utils/assets//icons8-connection-status-on-96.png";
+import online from "../utils/assets/icons8-connection-status-on-96.png";
 import offline from "../utils/assets/icons8-offline-96.png";
 import icon from "../utils/assets/hamburger.png";
 import UserContext from "../utils/context/UserContext";

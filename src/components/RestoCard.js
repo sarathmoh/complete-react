@@ -13,7 +13,7 @@ const RestoCard = ({ restoDetails }) => {
 
       <div>
         <h3 className="font-bold pt-2 text-xl text-center">{name}</h3>
-        <h4 className="text-center">{...cuisines.join("-")}</h4>
+        <h4 className="text-center">{cuisines.join("-")}</h4>
         <h4 className="text-center">{avgRating}</h4>
         <h4 className="text-center">deliveryTime:{deliveryTime}mins </h4>
       </div>
